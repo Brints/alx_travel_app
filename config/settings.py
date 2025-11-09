@@ -172,6 +172,7 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://travel-app-aniebiet-d267e17f35cf.herokuapp.com',
     'http://localhost:8000',
     'http://127.0.0.1:8000',
 ]
