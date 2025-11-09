@@ -85,6 +85,8 @@ In a new terminal, activate the virtual environment and run:
 ```bash
 celery -A config worker -l info
 ```
+## Documentation
+The API documentation is available at `http://localhost:8000/api/docs/` once the server is running.
 
 ## API Endpoints
 ### Authentication

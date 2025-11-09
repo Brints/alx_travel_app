@@ -24,7 +24,7 @@ HEROKU_APP_NAME = env('HEROKU_APP_NAME', default=None)
 if HEROKU_APP_NAME:
     ALLOWED_HOSTS = [f"{HEROKU_APP_NAME}.herokuapp.com"]
 else:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.localhost', '.127.0.0.1']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -101,11 +101,11 @@ DATABASES = {
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD'),
         'HOST': env('DB_HOST', default='localhost'),
-        'PORT': env('DB_PORT', default='3306'),
+        'PORT': env('DB_PORT', default='5432'),
     }
 }
 
-db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=False)
 DATABASES['default'].update(db_from_env)
 
 
@@ -170,3 +170,8 @@ EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='')
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
